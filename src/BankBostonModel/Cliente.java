@@ -34,9 +34,9 @@ public class Cliente {
         this.domicilio = domicilio;
         this.comuna = comuna;
         this.telefono = telefono;
-        this.cuentaCorriente = new CuentaCorriente(cuenta, 0);
-        this.cuentaAhorro = new CuentaAhorro(cuenta, 0);
-        this.cuentaCredito = new CuentaCredito(cuenta, 0);
+        this.cuentaCorriente = new CuentaCorriente(cuenta);
+        this.cuentaAhorro = new CuentaAhorro(cuenta);
+        this.cuentaCredito = new CuentaCredito(cuenta);
 
         System.out.println("¡Registro Exitoso! Su numero de cuenta es: " + cuenta);
     }
@@ -49,8 +49,14 @@ public class Cliente {
         return nombre;
     }
 
-    public CuentaCorriente getCuenta() {
+    public CuentaCorriente getCuentaCorriente() {
         return cuentaCorriente;
+    }
+     public CuentaAhorro getCuentaAhorro() {
+        return cuentaAhorro;
+    }
+      public CuentaCredito getCuentaCredito() {
+        return cuentaCredito;
     }
 
     @Override
@@ -63,7 +69,6 @@ public class Cliente {
                 "Domicilio: " + domicilio + '\'' +
                 "Comuna: " + comuna + '\'' +
                 "Teléfono: " + telefono + '\'' +
-                
                 '}';
     }
 

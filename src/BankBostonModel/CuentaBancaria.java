@@ -35,24 +35,10 @@ public abstract class CuentaBancaria {
     }
 
 
-    public void depositar(double monto) {
-        saldo += monto;
-        System.out.println("Depósito realizado: $" + monto);
-        System.out.println("Usted tiene un saldo actual de " + saldo + " pesos.");
-    }
+    public abstract void depositar(double monto);
 
     public abstract void girar(double monto);
 
-    
-
-    public void girar(int monto) {
-        if (monto > saldo) {
-            System.out.println("No se puede realizar el giro. Saldo insuficiente");
-        } else {
-            saldo -= monto;
-            System.out.println("¡Giro realizado de manera exitosa!");
-            System.out.println("Usted tiene un saldo actual de " + saldo + " pesos.");
-        }
-    }
+   
 
 }

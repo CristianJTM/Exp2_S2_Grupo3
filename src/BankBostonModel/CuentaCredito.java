@@ -9,20 +9,26 @@ package BankBostonModel;
  * @author Cristian
  */
 public class CuentaCredito extends CuentaBancaria{
+    private static final double limiteCredito = 1000000;
     
-    public CuentaCredito(String numeroCuenta, double saldo) {
-        double limiteCredito = 1000000;
-        saldo += limiteCredito;
-        super(numeroCuenta, saldo);
+    public CuentaCredito(String numeroCuenta) {
+        super(numeroCuenta,limiteCredito);
     }
 
     @Override
     public void girar(double monto) {
         if(monto<=saldo){
             saldo -=monto;
-            System.err.println("Giro desde Cuenta Ahorro: $"+monto);
+            System.out.println("Giro desde Cuenta de Credito: $"+monto);
         }else{
-            System.out.println("Saldo insuficiente en Cuenta Ahorro.");
+            System.out.println("Saldo insuficiente en Cuenta de Credito.");
         }
+    }
+    
+    @Override
+    public void depositar(double monto) {
+        saldo += monto;
+        System.out.println("Depósito realizado: $" + monto);
+        System.out.println("Usted tiene en su Cuenta de Credito un saldo actual de " + saldo + " pesos.");
     }
 }

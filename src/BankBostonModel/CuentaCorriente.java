@@ -10,17 +10,23 @@ package BankBostonModel;
  */
 public class CuentaCorriente extends CuentaBancaria{
 
-    public CuentaCorriente(String numeroCuenta, double saldo) {
-        super(numeroCuenta, saldo);
+    public CuentaCorriente(String numeroCuenta) {
+        super(numeroCuenta);
     }
 
     @Override
     public void girar(double monto) {
         if(monto<=saldo){
             saldo -=monto;
-            System.err.println("Giro desde Cuenta Corriente: $"+monto);
+            System.out.println("Giro desde Cuenta Corriente: $"+monto);
         }else{
             System.out.println("Saldo insuficiente en Cuenta Corriente.");
         }
+    }
+    
+    @Override
+    public void depositar(double monto) {
+        saldo += monto;
+        System.out.println("Depósito realizado: $" + monto);
     }
 }

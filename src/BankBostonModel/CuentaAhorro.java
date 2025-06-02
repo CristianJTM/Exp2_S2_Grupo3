@@ -11,17 +11,24 @@ package BankBostonModel;
 
 public class CuentaAhorro extends CuentaBancaria{
 
-    public CuentaAhorro(String numeroCuenta, double saldo) {
-        super(numeroCuenta, saldo);
+    public CuentaAhorro(String numeroCuenta) {
+        super(numeroCuenta);
     }
 
     @Override
     public void girar(double monto) {
         if(monto<=saldo){
             saldo -=monto;
-            System.err.println("Giro desde Cuenta Ahorro: $"+monto);
+            System.out.println("Giro desde Cuenta Ahorro: $"+monto);
         }else{
             System.out.println("Saldo insuficiente en Cuenta Ahorro.");
         }
+    }
+    
+    @Override
+    public void depositar(double monto) {
+        saldo += monto;
+        System.out.println("Depósito realizado: $" + monto);
+        System.out.println("Usted tiene en su Cuenta Ahorro un saldo actual de " + saldo + " pesos.");
     }
 }
