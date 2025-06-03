@@ -66,6 +66,7 @@ public class BankBostonApp {
                 case 2: {
                     Cliente encontrado = buscarClienteCuenta();
                     CuentaBancaria cuentaSeleccionada = null;
+                    String cuentaTipo = "";
                     if (encontrado != null) {
                         do {
                             System.out.println("Sesion Iniciada. N°Cuenta: " + encontrado.getCuentaCorriente().getNumeroCuenta());
@@ -78,18 +79,23 @@ public class BankBostonApp {
                             switch (opcion) {
                                 case 1:
                                     cuentaSeleccionada = encontrado.getCuentaCorriente();
+                                    cuentaTipo = "Cuenta Corriente";
+                                    operacionesCuenta(encontrado, cuentaSeleccionada, cuentaTipo);
                                     break;
                                 case 2:
                                     cuentaSeleccionada = encontrado.getCuentaAhorro();
+                                    cuentaTipo = "Cuenta Ahorro";
+                                    operacionesCuenta(encontrado, cuentaSeleccionada, cuentaTipo);
                                     break;
                                 case 3:
                                     cuentaSeleccionada = encontrado.getCuentaCredito();
+                                    cuentaTipo = "Cuenta de Credito";
+                                    operacionesCuenta(encontrado, cuentaSeleccionada, cuentaTipo);
                                     break;
                                 case 4:
                                     System.out.println("Sesion cerrada");
                                     break;
                             }
-                            operacionesCuenta(encontrado, cuentaSeleccionada);
                         } while (opcion != 4);
 
                     } else {
@@ -105,10 +111,11 @@ public class BankBostonApp {
         } while (opcion != 3);
     }
 
-    public static void operacionesCuenta(Cliente encontrado, CuentaBancaria cuentaSeleccionada) {
+    public static void operacionesCuenta(Cliente encontrado, CuentaBancaria cuentaSeleccionada, String cuentaTipo) {
         int opcion;
         do {
             System.out.println("Sesion Iniciada. N°Cuenta: " + encontrado.getCuentaCorriente().getNumeroCuenta());
+            System.out.println("Tipo de Cuenta: " + cuentaTipo);
             System.out.println("1.-Ver datos del Cliente");
             System.out.println("2.-Depositar");
             System.out.println("3.-Girar");
@@ -154,6 +161,7 @@ public class BankBostonApp {
 
     }
 
+    //Metodo para validar valores numericos
     public static int valorValido(int min, int max) {
         int opcion;
         boolean valido = false;
@@ -184,6 +192,7 @@ public class BankBostonApp {
         return 0;
     }
 
+    //Metodo para evitar parametros vacios
     public static String textoNoVacio(String mensaje) {
         String texto;
         do {

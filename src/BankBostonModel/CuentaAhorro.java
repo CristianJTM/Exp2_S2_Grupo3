@@ -28,7 +28,6 @@ public class CuentaAhorro extends CuentaBancaria{
     @Override
     public void depositar(double monto) {
         saldo += monto;
-        System.out.println("Depósito realizado: $" + monto);
-        System.out.println("Usted tiene en su Cuenta Ahorro un saldo actual de " + saldo + " pesos.");
+        System.out.println("Depósito realizado en Cuenta Ahorro: $" + monto);
     }
 }

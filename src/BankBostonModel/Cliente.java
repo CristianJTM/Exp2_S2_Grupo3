@@ -6,6 +6,8 @@ package BankBostonModel;
 
 import BankBostonModel.CuentaCorriente;
 import java.util.Random;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Cliente {
     private CuentaCorriente cuentaCorriente;
     private CuentaAhorro cuentaAhorro;
     private CuentaCredito cuentaCredito;
+    private static final Set<String> cuentasGeneradas = new HashSet<>();
 
     public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno,
             String domicilio, String comuna, int telefono) {
@@ -52,29 +55,37 @@ public class Cliente {
     public CuentaCorriente getCuentaCorriente() {
         return cuentaCorriente;
     }
-     public CuentaAhorro getCuentaAhorro() {
+
+    public CuentaAhorro getCuentaAhorro() {
         return cuentaAhorro;
     }
-      public CuentaCredito getCuentaCredito() {
+
+    public CuentaCredito getCuentaCredito() {
         return cuentaCredito;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "Nombre: " + nombre + '\'' + 
-                "Rut: " + rut + '\'' + 
-                "Nombre: " + nombre + '\'' +
-                "Apellido paterno: " + apellidoPaterno + '\'' +
-                "Apellido materno: " + apellidoMaterno + '\'' +
-                "Domicilio: " + domicilio + '\'' +
-                "Comuna: " + comuna + '\'' +
-                "Teléfono: " + telefono + '\'' +
-                '}';
+        return "Cliente{" + "Nombre: " + nombre + '\n'
+                + "Rut: " + rut + '\n'
+                + "Apellido paterno: " + apellidoPaterno + '\n'
+                + "Apellido materno: " + apellidoMaterno + '\n'
+                + "Domicilio: " + domicilio + '\n'
+                + "Comuna: " + comuna + '\n'
+                + "Teléfono: " + telefono + '\n'
+                + '}';
     }
-
+    
+    //Genera Numero de Cuenta Aleatorio de 9 digitos y valida que no se repita revisando el set de numeros de cuenta.
     private String generarNumeroCuenta() {
         Random random = new Random();
-        int numero = 100000000 + random.nextInt(900000000); // 9 dígitos
-        return String.valueOf(numero);
+        String numeroCuenta;
+        do {
+            int numero = 100000000 + random.nextInt(900000000);
+            numeroCuenta = String.valueOf(numero);
+        } while (cuentasGeneradas.contains(numeroCuenta));
+
+        cuentasGeneradas.add(numeroCuenta);
+        return numeroCuenta;
     }
 }

@@ -27,6 +27,6 @@ public class CuentaCorriente extends CuentaBancaria{
     @Override
     public void depositar(double monto) {
         saldo += monto;
-        System.out.println("Depósito realizado: $" + monto);
+        System.out.println("Depósito realizado Cuenta Corriente: $" + monto);
     }
 }
